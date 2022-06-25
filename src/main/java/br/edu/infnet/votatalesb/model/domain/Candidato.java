@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import br.edu.infnet.votatalesb.model.domain.dto.CandidatoDTO;
+
 @Entity
 @Table(name = "TCandidato", uniqueConstraints = @UniqueConstraint(columnNames = { "numero" }))
 public class Candidato {
@@ -20,16 +22,16 @@ public class Candidato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private int numero;
 	private String nome;
 
 	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-	@JoinColumn(name="idCandidato")
+	@JoinColumn(name = "idCandidato")
 	private List<Voto> votos;
-	
+
 	@ManyToOne
-	@JoinColumn(name="idEleicao")
+	@JoinColumn(name = "idEleicao")
 	private Eleicao eleicao;
 
 	public int getNumero() {
@@ -71,7 +73,19 @@ public class Candidato {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
 
+	public CandidatoDTO toDTO() {
+		CandidatoDTO candidatoDTO = new CandidatoDTO();
+		candidatoDTO.setEleicaoId(this.eleicao.getId());
+		candidatoDTO.setEleicao(this.eleicao.getDescricao());
+		candidatoDTO.setNumero(this.getNumero());
+		candidatoDTO.setNome(this.getNome());
+
+		if (this.votos != null && !this.votos.isEmpty()) {
+			candidatoDTO.setQuantidadeDeVotos(this.votos.size());
+		}
+		return candidatoDTO;
+	}
+
+	
 }

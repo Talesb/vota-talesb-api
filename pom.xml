@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.edu.infnet</groupId>
-	<artifactId>vota-talesb</artifactId>
+	<artifactId>vota-talesb-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>vota-talesb</name>
-	<description>Project to persist votes </description>
+	<name>vota-talesb-api</name>
+	<description>Api to persist votes </description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
