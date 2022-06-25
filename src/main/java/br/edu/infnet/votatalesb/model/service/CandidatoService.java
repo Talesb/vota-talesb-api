@@ -29,9 +29,9 @@ public class CandidatoService {
 		Candidato candidato = new Candidato();
 		candidato.setNumero(dto.getNumero());
 		candidato.setNome(dto.getNome());
-		Eleicao eleicao = eleicaoService.getById(dto.getEleicaoId());
-		if (eleicao != null) {
-			candidato.setEleicao(eleicao);
+		Optional<Eleicao> eleicao = eleicaoService.getById(dto.getEleicaoId());
+		if (!eleicao.isEmpty()) {
+			candidato.setEleicao(eleicao.get());
 		}
 		candidatoRepository.save(candidato);
 	}

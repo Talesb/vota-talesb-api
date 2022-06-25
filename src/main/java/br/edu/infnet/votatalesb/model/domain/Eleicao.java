@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import br.edu.infnet.votatalesb.model.domain.dto.EleicaoDTO;
+
 @Entity
 @Table(name = "TEleicao", uniqueConstraints = @UniqueConstraint(columnNames = { "descricao" }))
 public class Eleicao {
@@ -24,11 +26,11 @@ public class Eleicao {
 	private String descricao;
 
 	@OneToMany
-	@JoinColumn(name="idEleicao")
+	@JoinColumn(name = "idEleicao")
 	private List<Voto> votos;
-	
+
 	@OneToMany
-	@JoinColumn(name="idEleicao")
+	@JoinColumn(name = "idEleicao")
 	private List<Candidato> candidatos;
 
 	public Eleicao() {
@@ -73,6 +75,20 @@ public class Eleicao {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public EleicaoDTO toDTO() {
+		EleicaoDTO dto = new EleicaoDTO();
+		dto.setDescricao(this.getDescricao());
+
+		if (this.candidatos != null) {
+			dto.setQuantidadeDeCandidatos(this.candidatos.size());
+		}
+
+		if (this.votos != null) {
+			dto.setQuantidadeDeVotos(this.votos.size());
+		}
+		return dto;
 	}
 
 }
