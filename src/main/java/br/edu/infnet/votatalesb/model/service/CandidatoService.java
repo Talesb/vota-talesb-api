@@ -47,6 +47,12 @@ public class CandidatoService {
 	public List<Candidato> getByEleicaoId(Eleicao eleicaoId) {
 		return (List<Candidato>) this.candidatoRepository.findByEleicao(eleicaoId);
 	}
+	
+	public List<Candidato> getByEleicaoId(Integer eleicaoId) {
+		Eleicao eleicao = new Eleicao();
+		eleicao.setId(eleicaoId);
+		return (List<Candidato>) this.candidatoRepository.findByEleicao(eleicao);
+	}
 
 	public void remove(Integer id) {
 		candidatoRepository.deleteById(id);

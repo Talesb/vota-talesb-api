@@ -25,12 +25,15 @@ public class CandidatoController {
 	@Autowired
 	private CandidatoService candidatoService;
 
-	@Autowired
-	private EleicaoService eleicaoService;
-
 	@GetMapping
 	public List<CandidatoDTO> obterLista() {
 		return this.candidatoService.getAll().stream().map(cadidato -> cadidato.toDTO()).collect(Collectors.toList());
+	}
+
+	@GetMapping(value = "eleicao/{idEleicao}")
+	public List<CandidatoDTO> obterListaPorEleicao(@PathVariable Integer idEleicao) {
+		return this.candidatoService.getByEleicaoId(idEleicao).stream().map(cadidato -> cadidato.toDTO())
+				.collect(Collectors.toList());
 	}
 
 	@GetMapping(value = "/{idCandidato}")
@@ -52,7 +55,7 @@ public class CandidatoController {
 
 	@PostMapping
 	public void salvar(@RequestBody CandidatoDTO dto) {
- 		candidatoService.incluir(dto);
+		candidatoService.incluir(dto);
 	}
 
 }

@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.edu.infnet.votatalesb.model.domain.dto.VotoDTO;
+
 @Entity
 @Table(name = "TVoto")
 public class Voto {
@@ -81,6 +83,29 @@ public class Voto {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public VotoDTO toDTO() {
+		VotoDTO dto = new VotoDTO();
+		dto.setId(id);
+		dto.setLocalizacao(localizacao);
+		
+		if(this.eleitor!=null) {
+			dto.setEleitorId(eleitor.getId());
+			dto.setNomeEleitor(eleitor.getNome());
+		}
+		
+		if(this.eleicao!=null) {
+			dto.setEleicaoId(eleicao.getId());
+			dto.setDescricaoEleicao(eleicao.getDescricao());
+		}
+		
+		if(this.candidato!=null) {
+			dto.setCandidatoId(candidato.getId());
+			dto.setNomeCandidato(candidato.getNome());
+		}
+		dto.setNomeEleitor(localizacao);
+		return dto;
 	}
 
 }
