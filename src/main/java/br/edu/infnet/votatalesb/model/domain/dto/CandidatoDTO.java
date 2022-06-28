@@ -9,6 +9,7 @@ public class CandidatoDTO implements Serializable {
 	private Integer eleicaoId;
 	private String eleicao;
 	private Integer quantidadeDeVotos;
+	private Integer id;
 
 	public Integer getNumero() {
 		return numero;
@@ -50,4 +51,14 @@ public class CandidatoDTO implements Serializable {
 		this.eleicao = eleicao;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
+	
 }

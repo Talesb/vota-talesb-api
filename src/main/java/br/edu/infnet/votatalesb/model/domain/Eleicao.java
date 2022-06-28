@@ -80,6 +80,7 @@ public class Eleicao {
 	public EleicaoDTO toDTO() {
 		EleicaoDTO dto = new EleicaoDTO();
 		dto.setDescricao(this.getDescricao());
+		dto.setId(id);
 
 		if (this.candidatos != null) {
 			dto.setQuantidadeDeCandidatos(this.candidatos.size());

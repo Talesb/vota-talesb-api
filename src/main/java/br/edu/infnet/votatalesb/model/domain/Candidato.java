@@ -80,6 +80,7 @@ public class Candidato {
 		candidatoDTO.setEleicao(this.eleicao.getDescricao());
 		candidatoDTO.setNumero(this.getNumero());
 		candidatoDTO.setNome(this.getNome());
+		candidatoDTO.setId(id);
 
 		if (this.votos != null && !this.votos.isEmpty()) {
 			candidatoDTO.setQuantidadeDeVotos(this.votos.size());

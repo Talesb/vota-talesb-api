@@ -7,6 +7,7 @@ public class EleicaoDTO implements Serializable {
 	private String descricao;
 	private Integer quantidadeDeVotos;
 	private Integer quantidadeDeCandidatos;
+	private Integer id;
 
 	public Integer getQuantidadeDeVotos() {
 		return quantidadeDeVotos;
@@ -32,4 +33,13 @@ public class EleicaoDTO implements Serializable {
 		this.quantidadeDeCandidatos = quantidadeDeCandidatos;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

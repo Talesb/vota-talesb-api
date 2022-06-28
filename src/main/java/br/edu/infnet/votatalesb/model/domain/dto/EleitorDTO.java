@@ -10,7 +10,9 @@ public class EleitorDTO implements Serializable {
 	private String telefone;
 	private String token;
 	private Integer qtdVotos;
-
+	private Integer id;
+	
+	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -59,4 +61,14 @@ public class EleitorDTO implements Serializable {
 		this.qtdVotos = qtdVotos;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
+	
 }

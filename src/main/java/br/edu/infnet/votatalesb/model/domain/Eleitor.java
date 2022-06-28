@@ -94,6 +94,7 @@ public class Eleitor {
 		eleitorDTO.setEmail(email);
 		eleitorDTO.setTelefone(telefone);
 		eleitorDTO.setToken(token);
+		eleitorDTO.setId(id);
 		if (this.votos != null) {
 			eleitorDTO.setQtdVotos(this.votos.size());
 		}
